@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --premium-blue: #2563eb; }
-        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #000; overflow-x: hidden; }
-        
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #000; }
         #model-menu {
             display: none;
             position: absolute;
@@ -18,56 +17,45 @@
             width: 16rem;
             background: white;
             border: 1px solid black;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
             z-index: 100;
         }
         #model-menu.active { display: block !important; }
-        .tech-badge { border-left: 2px solid var(--premium-blue); padding-left: 1rem; }
-        
         .view-btn.active { border-color: black; font-weight: 700; }
-        #main-image { transition: opacity 0.2s ease-in-out; }
+        #main-image { transition: opacity 0.2s ease-in-out; min-height: 300px; }
     </style>
 </head>
 <body>
-
-    <header class="fixed top-0 w-full h-16 bg-white/80 backdrop-blur-md border-b flex items-center justify-between px-8 z-50">
+    <header class="fixed top-0 w-full h-16 bg-white border-b flex items-center justify-between px-8 z-50">
         <div class="flex items-center space-x-3">
             <div class="w-8 h-8 border-2 border-black rounded-full flex items-center justify-center font-bold text-[9px]">HLP</div>
             <span class="text-xs font-bold uppercase tracking-widest">Hardware Lab</span>
         </div>
-
         <nav class="relative">
             <button id="btn-modelos" class="text-[10px] font-bold uppercase tracking-widest">Modelos ▼</button>
-            <div id="model-menu">
-                <ul id="model-list" class="divide-y divide-gray-100"></ul>
-            </div>
+            <div id="model-menu"><ul id="model-list" class="divide-y divide-gray-100"></ul></div>
         </nav>
-
-        <div class="text-[10px] font-bold uppercase tracking-widest">Carrito (<span id="cart-count">0</span>)</div>
+        <div class="text-[10px] font-bold uppercase">Carrito (0)</div>
     </header>
 
     <main class="pt-16 flex flex-col lg:flex-row min-h-screen">
         <section class="w-full lg:w-2/3 p-12 flex flex-col justify-center items-center relative">
             <div class="absolute top-10 left-10 space-y-8">
-                <div class="tech-badge">
+                <div class="border-l-2 border-blue-600 pl-4">
                     <p class="text-[9px] text-gray-400 font-bold uppercase">VRAM</p>
                     <p id="info-vram" class="text-3xl font-light">--</p>
                 </div>
-                <div class="tech-badge">
+                <div class="border-l-2 border-blue-600 pl-4">
                     <p class="text-[9px] text-gray-400 font-bold uppercase">TDP</p>
                     <p id="info-tdp" class="text-3xl font-light">--</p>
                 </div>
             </div>
-
             <div class="w-full max-w-2xl flex flex-col items-center">
-                <img id="main-image" src="" alt="GPU View" class="w-full h-auto object-contain mb-8">
-                
+                <img id="main-image" src="" alt="GPU" class="w-full h-auto object-contain mb-8">
                 <div class="flex border border-gray-200 rounded-full p-1 bg-gray-50">
-                    <button id="view-front" class="view-btn active px-6 py-2 text-[10px] font-bold uppercase tracking-widest border-b-2 border-transparent transition-all">Frente</button>
-                    <button id="view-back" class="view-btn px-6 py-2 text-[10px] font-bold uppercase tracking-widest border-b-2 border-transparent transition-all">Posterior</button>
+                    <button id="view-front" class="view-btn active px-6 py-2 text-[10px] font-bold uppercase tracking-widest transition-all">Frente</button>
+                    <button id="view-back" class="view-btn px-6 py-2 text-[10px] font-bold uppercase tracking-widest transition-all">Posterior</button>
                 </div>
             </div>
-
             <div class="text-center mt-12">
                 <h2 id="gpu-name" class="text-5xl font-light uppercase tracking-tighter"></h2>
                 <p id="gpu-edition-label" class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-4"></p>
@@ -77,7 +65,7 @@
         <aside class="w-full lg:w-1/3 bg-gray-50 border-l p-10 flex flex-col justify-between">
             <div class="space-y-12">
                 <div>
-                    <h3 class="text-[10px] font-bold uppercase text-gray-400 mb-6 tracking-widest">Edición</h3>
+                    <h3 class="text-[10px] font-bold uppercase text-gray-400 mb-6">Edición</h3>
                     <div id="edition-selector" class="flex gap-4"></div>
                 </div>
                 <div id="tech-container" class="grid grid-cols-2 gap-3"></div>
@@ -88,7 +76,6 @@
             </div>
         </aside>
     </main>
-
     <script type="module" src="script.js"></script>
 </body>
 </html>

@@ -15,14 +15,14 @@ export const gpus = [
             { 
                 name: "Sakura Sugar", 
                 color: "#ffb7c5", 
-                front: "Assets/1.png",
-                back: "Assets/2.png" 
+                front: "1.png",
+                back: "2.png" 
             },
             { 
                 name: "Black Edition", 
                 color: "#1a1a1a", 
-                front: "Assets/3.png",
-                back: "Assets/4.png"
+                front: "3.png",
+                back: "4.png"
             }
         ]
     },
@@ -40,9 +40,10 @@ export const gpus = [
             { 
                 name: "Standard Edition", 
                 color: "#ffffff", 
-                front: "Assets/5.png",
-                back: "Assets/6.png"
+                front: "5.png",
+                back: "6.png"
             }
         ]
     }
+
 ];

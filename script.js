@@ -11,30 +11,23 @@ let currentEditionIndex = 0;
 let currentView = 'front';
 
 function updateImage() {
-    const gpu = gpus[currentGPUIndex];
-    const edition = gpu.editions[currentEditionIndex];
-    
+    const edition = gpus[currentGPUIndex].editions[currentEditionIndex];
     mainImage.style.opacity = "0";
     setTimeout(() => {
         mainImage.src = currentView === 'front' ? edition.front : edition.back;
         mainImage.style.opacity = "1";
-    }, 150);
+    }, 100);
 }
 
 function renderGPU(index) {
     currentGPUIndex = index;
     currentEditionIndex = 0;
-    currentView = 'front';
-    
     const gpu = gpus[index];
     
     document.getElementById('gpu-name').innerText = gpu.model;
     document.getElementById('info-vram').innerText = gpu.specs.memory;
     document.getElementById('info-tdp').innerText = gpu.specs.tdp;
     document.getElementById('final-price').innerText = `$${gpu.basePrice.toFixed(2)}`;
-    
-    btnFront.classList.add('active');
-    btnBack.classList.remove('active');
     
     renderEditions(gpu);
     renderTech(gpu);
@@ -46,7 +39,7 @@ function renderEditions(gpu) {
     container.innerHTML = '';
     gpu.editions.forEach((ed, idx) => {
         const btn = document.createElement('button');
-        btn.className = `w-10 h-10 rounded-full border-2 transition-all ${idx === 0 ? 'border-black scale-110' : 'border-transparent'}`;
+        btn.className = `w-10 h-10 rounded-full border-2 transition-all ${idx === 0 ? 'border-black' : 'border-transparent'}`;
         btn.style.backgroundColor = ed.color;
         btn.onclick = () => {
             currentEditionIndex = idx;
@@ -70,30 +63,18 @@ function renderTech(gpu) {
     `).join('') || '';
 }
 
-btnFront.onclick = () => {
-    currentView = 'front';
-    btnFront.classList.add('active');
-    btnBack.classList.remove('active');
-    updateImage();
-};
-
-btnBack.onclick = () => {
-    currentView = 'back';
-    btnBack.classList.add('active');
-    btnFront.classList.remove('active');
-    updateImage();
-};
+btnFront.onclick = () => { currentView = 'front'; btnFront.classList.add('active'); btnBack.classList.remove('active'); updateImage(); };
+btnBack.onclick = () => { currentView = 'back'; btnBack.classList.add('active'); btnFront.classList.remove('active'); updateImage(); };
 
 function init() {
     const modelList = document.getElementById('model-list');
     gpus.forEach((gpu, i) => {
         const li = document.createElement('li');
-        li.className = "p-4 hover:bg-gray-50 cursor-pointer text-[10px] font-bold uppercase border-b transition-colors";
+        li.className = "p-4 hover:bg-gray-50 cursor-pointer text-[10px] font-bold uppercase border-b";
         li.innerText = gpu.model;
         li.onclick = () => { renderGPU(i); modelMenu.classList.remove('active'); };
         modelList.appendChild(li);
     });
-
     btnModelos.onclick = (e) => { e.stopPropagation(); modelMenu.classList.toggle('active'); };
     document.onclick = () => modelMenu.classList.remove('active');
 }

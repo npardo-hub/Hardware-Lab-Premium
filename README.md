@@ -1,4 +1,4 @@
-# 🖥️ Hardware Lab — Boutique GPU Experience ((invented Content))
+# 🖥️ Boutique GPU  ((invented Content))
 
 Welcome to **Hardware Lab Premium**, a high-end, minimalist e-commerce interface designed for PC hardware enthusiasts. This project focuses on a "boutique" shopping experience, prioritizing high-fidelity product visualization and a clean, distraction-free UI.
 
